@@ -5,6 +5,8 @@ public class Main {
 
         System.out.println("Start....");
         CommandHandler commandHandler = new CommandHandler();
+        System.out.println(commandHandler.banner());
+        commandHandler.menu();
         System.out.println("....Ended");
     }
 }

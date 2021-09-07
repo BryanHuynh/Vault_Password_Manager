@@ -2,18 +2,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Objects;
 import java.util.Scanner;
-import java.lang.reflect.Method;
 import java.util.function.Function;
 
 public class CommandHandler {
     boolean running = true;
     Scanner command = new Scanner(System.in);
-    public CommandHandler() throws Exception {
-        System.out.println(this.banner());
-        menu();
-    }
 
-    private void menu() {
+    public void menu() {
         System.out.println(this.start());
         System.out.print("Command: ");
         while(running){
@@ -23,10 +18,12 @@ public class CommandHandler {
                     running = false;
                     break;
                 case "1":
-                    choice1();
+                    user_input_password_generate();
                     menu();
                     break;
                 case "2":
+                    user_input_add_item();
+                    menu();
                     break;
                 case "3":
                     break;
@@ -61,7 +58,11 @@ public class CommandHandler {
         return false;
     }
 
-    private void choice1() {
+    private void user_input_add_item(){
+
+    }
+
+    private void user_input_password_generate() {
         int length = Integer.parseInt(inputHandler("length default[12]:", isNum, "12"));
         boolean uppercase = parseYn(inputHandler("uppercase? : [Y/n]", isYn, "y"));
         boolean lowercase = parseYn(inputHandler("lowercase? : [Y/n]", isYn, "y"));
@@ -79,7 +80,7 @@ public class CommandHandler {
                 case "":
                     break;
                 case "1":
-                    choice1();
+                    user_input_password_generate();
                     return;
                 case "2":
                     return;
@@ -109,7 +110,7 @@ public class CommandHandler {
         return readFile("src/Command_Information/Start");
     }
 
-    private String banner(){
+    public String banner(){
         return readFile("src/Command_Information/Banner");
     }
 
